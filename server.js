@@ -1,7 +1,8 @@
-require('.env');
+require('dotenv').config();
 /* ==== External Modules ==== */
 const express = require("express");
 const methodOverride = require("method-override");
+const mongoose = require("mongoose");
 
 /* ==== Internal Modules ==== */
 const routes = require("./routes");
@@ -27,9 +28,16 @@ app.use((req, res, next) => {
 });
 
 
-//commmented out code that will be used to connect to database
-//const dbUrl = process.env.DATABASE_URL;
+// connection to database
+const db = mongoose.connection;
+const dbUrl = process.env.DATABASE_URL;
 
+mongoose
+        .connect(dbUrl)
+        .then(() =>
+            console.log(`+++++ MongoDB successfull connected at ${db.host}:${db.port}! +++++`)
+        )
+        .catch((err) => console.log(`----- MongoDB connection FAILED :( Error: ${err}) -----`))
 
 /* ==== Routes && Controllers ==== */
 // home route
