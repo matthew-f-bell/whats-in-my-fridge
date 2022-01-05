@@ -1,8 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 /* ==== External Modules ==== */
 const express = require("express");
 const methodOverride = require("method-override");
-const mongoose = require("mongoose");
 
 /* ==== Internal Modules ==== */
 const routes = require("./routes");
@@ -27,28 +26,19 @@ app.use((req, res, next) => {
     next();
 });
 
-
-// connection to database
-const db = mongoose.connection;
-const dbUrl = process.env.DATABASE_URL;
-
-mongoose
-        .connect(dbUrl)
-        .then(() =>
-            console.log(`+++++ MongoDB successfull connected at ${db.host}:${db.port}! +++++`)
-        )
-        .catch((err) => console.log(`----- MongoDB connection FAILED :( Error: ${err}) -----`))
-
 /* ==== Routes && Controllers ==== */
 // home route
 app.get("/", (req, res) => {
-    res.send("<h1>Sanity Check/h1>")
-})
+    res.render("index")
+});
 
 // 404 route
 app.get((req, res) => {
     res.send("404! Error! Page not found >:(")
-})
+});
+
+// Internal Routes
+app.use("/foods", routes.foods);
 
 /* ==== Server bind ==== */
 app.listen(PORT, () => {

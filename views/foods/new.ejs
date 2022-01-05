@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head.ejs') %> 
+    <title>Food Inventory</title>
+</head>
+<body>
+    <nav>
+        <%- include ('../partials/nav.ejs') %> 
+    </nav>
+    <main>
+        <form action="/foods" method="POST">
+            <input type="text" name="name" placeholder="Name of Food" />
+            <input type="date" name="date_purchased" value="2022-01-01" />
+            <input type="text" name="type_of_food" placeholder="Fruit, Vegetable, Meat, etc..." />
+            <input type="submit" value="Create" />
+        </form>
+    </main>
+</body>
+</html>

@@ -34,17 +34,34 @@ const show = (req, res) => {
         if (err) return res.send(err);
 
         const context = { food: foundFood };
-        return res.rencder("food/show", context);
+        return res.render("foods/show", context);
     });
 };
 
 // New
 
 const newFood = (req, res) => {
+    res.render("foods/new");
+};
+
+// Create
+
+const create = (req, res) => {
     db.Food.create(req.body, function (err, createdFood) {
         if (err) return res.send(err);
 
         return res.redirect("/foods");
+    });
+};
+
+// Edit
+
+const edit = (req, res) => {
+    db.Food.findById(req.params.id, (err, foundFood) => {
+        if (err) return res.send(err);
+
+        const context = { food: foundFood };
+        return res.render("foods/edit", context);
     });
 };
 

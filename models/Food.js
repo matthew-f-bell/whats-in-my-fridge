@@ -10,7 +10,7 @@ const foodSchema = new mongoose.Schema(
             type: String,
             required: [true, "You must provide a name for the food"],
         },
-        date_purchase: {
+        date_purchased: {
             type: Date,
             required: [true, "You must enter the date of when you purchased the food"]
         },

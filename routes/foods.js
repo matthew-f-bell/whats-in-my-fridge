@@ -3,7 +3,7 @@
 =============================================*/
 
 // external requires
-const router = require("express").Router;
+const router = require("express").Router();
 const ctrl = require("../controllers");
 
 // Rest Routes as a guide
@@ -24,7 +24,7 @@ router.get("/:id", ctrl.foods.show);
 router.post("/", ctrl.foods.create);
 router.put("/:id", ctrl.foods.update);
 router.delete("/:id", ctrl.foods.destroy);
-router.get("/:id/edit", ctrl.authors.edit);
+router.get("/:id/edit", ctrl.foods.edit);
 
 
 // export the routes created with router

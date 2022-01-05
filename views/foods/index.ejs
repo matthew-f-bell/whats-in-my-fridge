@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head.ejs') %> 
+    <title>Food Inventory</title>
+</head>
+<body>
+    <nav>
+        <%- include ('../partials/nav.ejs') %> 
+    </nav>
+    <main>
+        <h2>List of Food</h2>
+        <% if(!foods.length) { %>
+            <p>You have no food.</p>
+        <% } %> 
+        <ul>
+            <% foods.forEach(food => { %>
+            <li>
+                <a href="/foods/<%= food._id %>"><%= food.name %></a>
+            </li> 
+            <% }) %> 
+        </ul>
+    </main>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../partials/head.ejs') %> 
+    <title>Food Inventory</title>
+</head>
+<body>
+    <nav>
+        <%- include ('../partials/nav.ejs') %> 
+    </nav>
+    <main>
+        <h1>Edit <%= food.name %></h1>
+        <form action="/foods/<%= food._id %>?_method=PUT" method="POST">
+            <input type="text" name="name" value="<%= food.name %>" />
+            <input type="submit" value="Update" />
+        </form>
+    </main>
+</body>
+</html>
