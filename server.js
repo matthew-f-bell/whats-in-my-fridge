@@ -1,4 +1,4 @@
-require('.env');
+require("dotenv").config();
 /* ==== External Modules ==== */
 const express = require("express");
 const methodOverride = require("method-override");
@@ -26,21 +26,19 @@ app.use((req, res, next) => {
     next();
 });
 
-
-//commmented out code that will be used to connect to database
-//const dbUrl = process.env.DATABASE_URL;
-
-
 /* ==== Routes && Controllers ==== */
 // home route
 app.get("/", (req, res) => {
-    res.send("<h1>Sanity Check/h1>")
-})
+    res.render("index")
+});
 
 // 404 route
 app.get((req, res) => {
     res.send("404! Error! Page not found >:(")
-})
+});
+
+// Internal Routes
+app.use("/foods", routes.foods);
 
 /* ==== Server bind ==== */
 app.listen(PORT, () => {
